@@ -1,34 +1,26 @@
 # Kit-Uni
 
-Protótipo de startup para estudantes encontrarem kitnets e moradias próximas de universidades, com opções de aluguel mensal, diária/noite, divisão de despesas e localização.
+Protótipo funcional da **Kit-Uni**, uma plataforma de moradia universitária.
 
-## Tecnologias
+## Recursos do protótipo
 
-- HTML
-- CSS
-- JavaScript
-- Geolocation API do navegador
-- LocalStorage para dados demonstrativos
+- Busca e filtros de moradias
+- Geolocalização para ordenar imóveis mais próximos
+- Aluguel mensal, diária e pernoite
+- Divisão de aluguel e despesas entre universitários
+- Perfis de universitário e proprietário
+- Cadastro demonstrativo de kitnets
+- Upload e pré-visualização de fotos
+- Favoritos
+- Agendamento de visitas
+- Avaliações
+- Interface responsiva
+- Identidade visual vinho, dourado e creme
 
-## Executar localmente
+## Publicação
 
-Você pode abrir o `index.html` diretamente. Para testar a localização com maior compatibilidade, use um servidor local:
+Este repositório já inclui o workflow `.github/workflows/pages.yml` para GitHub Pages.
 
-```bash
-python3 -m http.server 8000
-```
+Em **Settings → Pages**, selecione **GitHub Actions** como fonte de publicação.
 
-Depois acesse `http://localhost:8000`.
-
-## Hospedar no GitHub Pages
-
-1. Crie um repositório no GitHub, por exemplo `kit-uni`.
-2. Envie todos os arquivos desta pasta para a raiz do repositório.
-3. No GitHub, abra **Settings > Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch **main** e a pasta **/(root)**.
-6. Clique em **Save**.
-
-Após o deploy, o site será servido por HTTPS e o botão de localização poderá solicitar a permissão do navegador normalmente.
-
-> Este projeto é um protótipo demonstrativo. Os imóveis, usuários e demais dados usados na interface são fictícios.
+O workflow publica automaticamente a branch `principal` sempre que houver um push.
