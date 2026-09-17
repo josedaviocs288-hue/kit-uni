@@ -3,7 +3,7 @@ name: Publicar Kit-Uni
 on:
   push:
     branches:
-      - principal
+      - main
   workflow_dispatch:
 
 permissions:
