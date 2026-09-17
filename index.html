@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6f0818" />
+  <title>Kit-Uni | Moradia universitária simples, segura e flexível</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <a href="#inicio" class="brand brand-logo-wrap" aria-label="Kit-Uni">
+        <img src="assets/kituni-logo.png" class="brand-logo" alt="Logo Kit-Uni">
+      </a>
+      <nav class="desktop-nav">
+        <a href="#kitnets">Encontrar moradia</a>
+        <a href="#dividir">Dividir aluguel</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#seguranca">Segurança</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn ghost" id="favoritesBtn">♡ Favoritos <span id="favCount">0</span></button>
+        <button class="btn account-btn" id="accountBtn">Entrar / Cadastrar</button>
+        <button class="btn primary" id="publishBtn">+ Anunciar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-glow glow-1"></div>
+      <div class="hero-glow glow-2"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Moradia estudantil do seu jeito</div>
+          <h1>Chegue na faculdade e já tenha <span>onde ficar.</span></h1>
+          <p class="hero-subtitle">Encontre kitnets próximas à universidade, alugue por mês, por um dia ou por uma noite e, se quiser economizar, divida aluguel e despesas com outros universitários.</p>
+          <div class="hero-points">
+            <span>✓ Perto do campus</span>
+            <span>✓ Opções verificadas</span>
+            <span>✓ Divisão de despesas</span>
+            <span>✓ Estadias curtas</span>
+          </div>
+        </div>
+
+        <div class="search-card">
+          <div class="search-card-top">
+            <div>
+              <small>Encontre uma opção</small>
+              <h2>Como você quer ficar?</h2>
+            </div>
+            <span class="status-dot">● Demo online</span>
+          </div>
+
+          <div class="stay-tabs" role="tablist">
+            <button class="stay-tab active" data-stay="monthly">Mensal</button>
+            <button class="stay-tab" data-stay="day">Por dia</button>
+            <button class="stay-tab" data-stay="night">Uma noite</button>
+            <button class="stay-tab" data-stay="shared">Dividir</button>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Universidade
+              <select id="universityFilter">
+                <option value="all">Todas as universidades</option>
+                <option value="UFC">UFC</option>
+                <option value="UECE">UECE</option>
+                <option value="UNIFOR">UNIFOR</option>
+                <option value="IFCE">IFCE</option>
+              </select>
+            </label>
+            <label>
+              Preço máximo
+              <select id="priceFilter">
+                <option value="99999">Qualquer preço</option>
+                <option value="100">Até R$ 100</option>
+                <option value="300">Até R$ 300</option>
+                <option value="700">Até R$ 700</option>
+                <option value="1000">Até R$ 1.000</option>
+                <option value="1500">Até R$ 1.500</option>
+              </select>
+            </label>
+            <label>
+              <span id="distanceLabel">Distância máxima do campus</span>
+              <select id="distanceFilter">
+                <option value="999">Qualquer distância</option>
+                <option value="1">Até 1 km</option>
+                <option value="2">Até 2 km</option>
+                <option value="5">Até 5 km</option>
+              </select>
+            </label>
+            <label>
+              Estrutura
+              <select id="typeFilter">
+                <option value="all">Todas</option>
+                <option value="Mobiliada">Mobiliada</option>
+                <option value="Semi-mobiliada">Semi-mobiliada</option>
+                <option value="Sem mobília">Sem mobília</option>
+              </select>
+            </label>
+          </div>
+          <div class="location-panel" id="locationPanel">
+            <button type="button" class="location-button" id="locationBtn">📍 Usar minha localização</button>
+            <div class="location-copy">
+              <strong id="locationStatus">Veja primeiro as moradias mais próximas de você</strong>
+              <small id="locationPrivacy">Sua localização é usada somente nesta tela e não é salva.</small>
+            </div>
+            <button type="button" class="location-clear hidden" id="clearLocationBtn">Desativar</button>
+          </div>
+          <button class="btn primary search-main" id="searchBtn">Buscar opções</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <div class="container quick-grid">
+        <button class="quick-card" data-action="monthly"><span>🏠</span><div><strong>Moradia mensal</strong><small>Para todo o semestre</small></div></button>
+        <button class="quick-card" data-action="shared"><span>🤝</span><div><strong>Dividir aluguel</strong><small>Encontre colegas</small></div></button>
+        <button class="quick-card" data-action="night"><span>🌙</span><div><strong>Passar uma noite</strong><small>Para prova ou evento</small></div></button>
+        <button class="quick-card" data-action="day"><span>☀️</span><div><strong>Usar por um dia</strong><small>Estadia curta</small></div></button>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="container stats-grid">
+        <div><strong>120+</strong><span>moradias de demonstração</span></div>
+        <div><strong>4</strong><span>universidades atendidas</span></div>
+        <div><strong>34</strong><span>opções para dividir</span></div>
+        <div><strong>4,8★</strong><span>avaliação simulada</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="kitnets">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Moradias</span>
+            <h2 id="resultsTitle">Kitnets perto da universidade</h2>
+            <p id="resultsSubtitle">Compare localização, preço, segurança e flexibilidade.</p>
+          </div>
+          <div class="results-meta"><span id="resultCount">0</span> opções encontradas</div>
+        </div>
+        <div id="listingGrid" class="listing-grid"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">⌕</div>
+          <h3>Nenhuma opção encontrada</h3>
+          <p>Tente aumentar o limite de preço ou distância.</p>
+          <button class="btn primary" id="resetFilters">Limpar filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section roommate-section" id="dividir">
+      <div class="container roommate-layout">
+        <div class="roommate-copy">
+          <span class="section-kicker">Economize em grupo</span>
+          <h2>Divida aluguel e despesas com outros universitários.</h2>
+          <p>A Kit-Uni também conecta estudantes interessados na mesma moradia. O protótipo calcula quanto cada pessoa pagaria e registra o interesse em dividir.</p>
+          <div class="split-box">
+            <label>Aluguel mensal <input id="splitRent" type="number" value="1200" min="1"></label>
+            <label>Água + energia + internet <input id="splitBills" type="number" value="300" min="0"></label>
+            <label>Número de moradores
+              <select id="splitPeople"><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
+            </label>
+            <div class="split-result"><span>Cada universitário pagaria aprox.</span><strong id="splitResult">R$ 500</strong><small>por mês</small></div>
+          </div>
+        </div>
+        <div class="roommate-card">
+          <div class="avatar-stack"><span>LF</span><span>AM</span><span>+1</span></div>
+          <span class="match-tag">Match universitário</span>
+          <h3>Encontre pessoas com rotina parecida.</h3>
+          <div class="match-list">
+            <div>🎓 Mesma universidade</div>
+            <div>📚 Curso e turno</div>
+            <div>💰 Faixa de orçamento</div>
+            <div>🚭 Preferências de convivência</div>
+          </div>
+          <button class="btn primary full" id="findRoommateBtn">Quero encontrar colegas</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="como-funciona">
+      <div class="container">
+        <div class="section-head centered">
+          <div>
+            <span class="section-kicker">Experiência simples</span>
+            <h2>Como a Kit-Uni funciona</h2>
+            <p>Um único lugar para estudante e proprietário.</p>
+          </div>
+        </div>
+        <div class="steps-grid four">
+          <article class="step-card"><span class="step-number">01</span><div class="step-icon">👤</div><h3>Crie seu perfil</h3><p>Cadastre-se como universitário ou proprietário de kitnet.</p></article>
+          <article class="step-card"><span class="step-number">02</span><div class="step-icon">🎓</div><h3>Escolha o campus</h3><p>Ative sua localização e veja primeiro as moradias mais próximas, além das opções para dividir.</p></article>
+          <article class="step-card"><span class="step-number">03</span><div class="step-icon">📅</div><h3>Agende ou reserve</h3><p>Solicite visita, diária, noite ou aluguel mensal.</p></article>
+          <article class="step-card"><span class="step-number">04</span><div class="step-icon">⭐</div><h3>Avalie a experiência</h3><p>Perfis e imóveis podem receber avaliações depois da estadia.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="seguranca">
+      <div class="container safety-grid">
+        <div class="safety-copy">
+          <span class="section-kicker">Segurança e confiança</span>
+          <h2>Mais tranquilidade para estudantes, famílias e proprietários.</h2>
+          <p>A proposta da Kit-Uni é reunir informações importantes antes do primeiro contato e tornar os perfis mais transparentes.</p>
+          <div class="check-list">
+            <span>✓ Perfil do proprietário verificado</span>
+            <span>✓ Fotos do imóvel e comodidades</span>
+            <span>✓ Avaliações de outros estudantes</span>
+            <span>✓ Distância até a universidade e até você</span>
+            <span>✓ Denúncia de anúncio suspeito</span>
+            <span>✓ Preferências para dividir moradia</span>
+          </div>
+        </div>
+        <div class="safety-panel">
+          <div class="map-fake">
+            <div class="road road-a"></div><div class="road road-b"></div>
+            <div class="campus-pin">🎓 <span>Campus</span></div>
+            <div class="home-pin hp1">⌂</div><div class="home-pin hp2">⌂</div><div class="home-pin hp3">⌂</div><div class="radius"></div>
+          </div>
+          <div class="safety-score-card"><span>Região analisada</span><strong>Segurança alta</strong><div class="score-row"><span>Índice demonstrativo</span><b>8,7 / 10</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="owner-section">
+      <div class="container owner-box">
+        <div class="owner-visual"><img src="assets/kituni-logo.png" alt="Kit-Uni"></div>
+        <div>
+          <span class="section-kicker light">Para proprietários</span>
+          <h2>Tem uma kitnet? Publique em poucos minutos.</h2>
+          <p>Cadastre valor, localização, universidade próxima, tipos de estadia aceitos e várias fotos do imóvel. No protótipo, o novo anúncio aparece imediatamente na tela.</p>
+          <button class="btn light-btn" id="ownerPublishBtn">Cadastrar minha kitnet</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div class="footer-brand"><img src="assets/kituni-logo.png" alt="Kit-Uni"><div><strong>Kit-Uni</strong><span>Moradia universitária sem complicação.</span></div></div>
+      <p>Protótipo de startup para apresentação acadêmica • 2026</p>
+    </div>
+  </footer>
+
+  <!-- Detalhes -->
+  <div class="modal-backdrop hidden" id="detailsModal" role="dialog" aria-modal="true">
+    <div class="modal large-modal">
+      <button class="modal-close" id="closeModal" aria-label="Fechar">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Cadastro/Login -->
+  <div class="modal-backdrop hidden" id="accountModal" role="dialog" aria-modal="true">
+    <div class="modal account-modal">
+      <button class="modal-close" data-close-account aria-label="Fechar">×</button>
+      <div class="account-side">
+        <img src="assets/kituni-logo.png" alt="Kit-Uni">
+        <h3>Uma conta para encontrar ou anunciar sua próxima moradia.</h3>
+        <p>Escolha seu tipo de perfil para experimentar o protótipo.</p>
+      </div>
+      <div class="account-form-wrap">
+        <span class="section-kicker">Criar conta</span>
+        <h2>Você é...</h2>
+        <div class="role-toggle">
+          <button type="button" class="role-btn active" data-role="student">🎓 Universitário</button>
+          <button type="button" class="role-btn" data-role="owner">🏠 Dono de kitnet</button>
+        </div>
+        <form id="accountForm" class="publish-form">
+          <input type="hidden" id="accountRole" value="student">
+          <label>Nome completo<input id="accountName" required placeholder="Seu nome"></label>
+          <label>E-mail<input type="email" required placeholder="voce@email.com"></label>
+          <label id="universityField">Universidade<select id="accountUniversity"><option>UFC</option><option>UECE</option><option>UNIFOR</option><option>IFCE</option><option>Outra</option></select></label>
+          <label>Senha<input type="password" required minlength="4" value="1234"></label>
+          <label class="check-inline"><input type="checkbox" required> <span>Aceito os termos de demonstração.</span></label>
+          <button class="btn primary full" type="submit">Criar perfil</button>
+          <small class="form-note">Protótipo: os dados ficam apenas neste navegador.</small>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publicar -->
+  <div class="modal-backdrop hidden" id="publishModal" role="dialog" aria-modal="true">
+    <div class="modal publish-modal">
+      <button class="modal-close" data-close-publish aria-label="Fechar">×</button>
+      <span class="section-kicker">Novo anúncio</span>
+      <h2>Cadastre sua kitnet</h2>
+      <p>Adicione informações e fotos. O anúncio será criado na demonstração.</p>
+      <form id="publishForm" class="publish-form publish-grid">
+        <label>Nome do imóvel<input id="newTitle" required placeholder="Ex.: Kitnet Benfica 02"></label>
+        <label>Universidade próxima<select id="newUniversity" required><option>UFC</option><option>UECE</option><option>UNIFOR</option><option>IFCE</option></select></label>
+        <label>Bairro / cidade<input id="newNeighborhood" required placeholder="Benfica • Fortaleza, CE"></label>
+        <label>Distância do campus (km)<input id="newDistance" type="number" step="0.1" min="0" required value="1"></label>
+        <label>Aluguel mensal<input id="newMonthly" type="number" min="1" required placeholder="900"></label>
+        <label>Estrutura<select id="newType"><option>Mobiliada</option><option>Semi-mobiliada</option><option>Sem mobília</option></select></label>
+        <fieldset class="stay-options"><legend>Tipos de aluguel aceitos</legend>
+          <label class="check-inline"><input id="allowMonthly" type="checkbox" checked><span>Mensal</span></label>
+          <label class="check-inline"><input id="allowDay" type="checkbox"><span>Diária</span></label>
+          <label class="check-inline"><input id="allowNight" type="checkbox"><span>Uma noite</span></label>
+          <label class="check-inline"><input id="allowShared" type="checkbox"><span>Dividir com estudantes</span></label>
+        </fieldset>
+        <div class="short-rates" id="shortRates">
+          <label>Valor por dia<input id="newDay" type="number" min="0" placeholder="80"></label>
+          <label>Valor por noite<input id="newNight" type="number" min="0" placeholder="70"></label>
+        </div>
+        <label class="photo-upload full-span">Fotos do imóvel
+          <input id="photosInput" type="file" accept="image/*" multiple>
+          <span class="upload-drop">📷 Clique para escolher fotos da casa ou kitnet<br><small>Você pode selecionar várias imagens</small></span>
+        </label>
+        <div id="photoPreview" class="photo-preview full-span"></div>
+        <label class="full-span">Descrição<textarea id="newDescription" rows="3" placeholder="Conte os principais diferenciais do imóvel..."></textarea></label>
+        <button class="btn primary full-span" type="submit">Publicar no protótipo</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reserva -->
+  <div class="modal-backdrop hidden" id="bookingModal" role="dialog" aria-modal="true">
+    <div class="modal small-modal">
+      <button class="modal-close" data-close-booking aria-label="Fechar">×</button>
+      <span class="section-kicker">Solicitar estadia</span>
+      <h2 id="bookingTitle">Reservar</h2>
+      <form id="bookingForm" class="publish-form">
+        <label>Tipo de estadia<select id="bookingType"><option value="monthly">Mensal</option><option value="day">Um dia</option><option value="night">Uma noite</option></select></label>
+        <label>Data desejada<input id="bookingDate" type="date" required></label>
+        <label>Mensagem para o proprietário<textarea rows="3" placeholder="Olá! Tenho interesse nesta kitnet..."></textarea></label>
+        <div class="booking-total"><span>Valor estimado</span><strong id="bookingPrice">R$ 0</strong></div>
+        <button class="btn primary" type="submit">Enviar solicitação</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Colegas -->
+  <div class="modal-backdrop hidden" id="roommateModal" role="dialog" aria-modal="true">
+    <div class="modal small-modal">
+      <button class="modal-close" data-close-roommate aria-label="Fechar">×</button>
+      <span class="section-kicker">Match universitário</span>
+      <h2>Encontre colegas para dividir</h2>
+      <form id="roommateForm" class="publish-form">
+        <label>Universidade<select><option>UFC</option><option>UECE</option><option>UNIFOR</option><option>IFCE</option></select></label>
+        <label>Curso<input required placeholder="Ex.: ADS, Direito, Enfermagem..."></label>
+        <label>Turno<select><option>Manhã</option><option>Tarde</option><option>Noite</option><option>Integral</option></select></label>
+        <label>Orçamento máximo mensal<input type="number" required placeholder="600"></label>
+        <label class="check-inline"><input type="checkbox"><span>Prefiro ambiente sem fumantes</span></label>
+        <button class="btn primary" type="submit">Buscar matches</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden">Ação realizada</div>
+  <script src="script.js"></script>
+</body>
+</html>
